@@ -363,6 +363,18 @@
                     </li>
                 </ul>
             </div>
+            <form class="footer-form">
+                <label lang="ru" class="footer-label">
+                    <span class="footer-label-text font-700">подпишитесь на рассылку</span>
+                    <input type="email" name="email" class="footer-mail" placeholder="E-mail">
+                </label>
+                <button type="submit" class="footer-form-button">
+                    <span class="footer-form-button-text">Подписаться</span>
+                    <svg class="footer-svg" width="20" height="20">
+                        <use href="./images/icons/symbol-defs-optimus.svg#footer-icon-send" ></use>
+                    </svg>
+                </button>
+            </form>
         </div>
     </footer>
 
@@ -373,8 +385,54 @@
                     <use href="./images/icons/symbol-defs-optimus.svg#icon-modal-close-icon"></use>
                 </svg>
             </button>
+            <div class="modal-form">
+                <form name="signup_form">
+                    <p class="form-title">Оставьте свои данные, мы вам перезвоним</p>
+                    <label lang="ru" class="is-margined">
+                        <span class="form-text">имя</span>
+                        <span class="is-relative">
+                            <input type="text" name="user-name" class="modal-input" placeholder="Иван" required minlength="4">
+                            <svg class="modal-svg" width="12" height="12">
+                                <use href="./images/icons/symbol-defs-optimus.svg#icon-man"></use>
+                            </svg>
+                        </span>
+                    </label>
+                    <label lang="ru" class="is-margined">
+                        <span class="form-text">телефон</span>
+                        <span class="is-relative">
+                            <input type="tel" name="user-phone" class="modal-input" placeholder="050-123-45-67" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
+                            <svg class="modal-svg" width="13" height="13">
+                                <use href="./images/icons/symbol-defs-optimus.svg#icon-tel"></use>
+                            </svg>
+                        </span>
+                    </label>
+                    <label lang="ru" class="is-margined">
+                        <span class="form-text">почта</span>
+                        <span class="is-relative">
+                            <input type="email" name="user-email" class="modal-input" placeholder="example@mail.com" required>
+                            <svg class="modal-svg" width="15" height="12">
+                                <use href="./images/icons/symbol-defs-optimus.svg#icon-email"></use>
+                            </svg>
+                        </span>
+                    </label>
+                    <label lang="ru">
+                        <span class="form-text">комментарий</span>
+                        <span class="is-relative">
+                            <textarea class="modal-feedback" rows="5" placeholder="Введите текст"></textarea>
+                        </span>
+                    </label>
+                    <label lang="ru">
+                        <input type="checkbox" name="checkbox" class="checkbox visually-hidden" required>
+                        <span class="checkbox-text">Соглашаюсь с рассылкой и принимаю 
+                            <a href="" class="checkbox-text-link">Условия договора</a>
+                        </span>
+                    </label>
+                    <button type="submit" class="modal-submit-button font-700">отправить</button>
+                </form>
+            </div>
         </div>
     </div>
+    
     <script src="./js/modal.js"></script>
 </body>
 

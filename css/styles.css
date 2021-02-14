@@ -1,11 +1,14 @@
 :root {
   --main-text-color: rgb(33, 33, 33);
+  --modal-border-color: rgba(33, 33, 33, 0.2);
   --other-text-color: rgb(117, 117, 117);
-  --color-hover_focus: rgb(33, 150, 243);
+  --modal-placeholder-text: rgba(117, 117, 117, 0.5);
+  --color-hover_focus: rgb(32, 148, 243);
+  --modal-submit-button-hover_focus: rgb(24, 140, 232);
   --font-title: "Raleway", sans-serif;
   --font-other: "Roboto", sans-serif;
   --very-light-color: rgb(255, 255, 255);
-  --dark-background: rgb(47, 48, 58);
+  --dark-background: hsl(235, 10%, 21%);
   --semi-dark-background: rgba(47, 48, 58, 0.8);
   --grey-light-background: rgb(236, 236, 236);
   --grey-ld-background: rgb(245, 244, 250);
@@ -16,6 +19,9 @@
   --transform-type: cubic-bezier(0.4, 0, 0.2, 1);
   --background-portfolio-cards: rgba(33, 150, 243, 0.9);
   --modal-svg-border: rgba(0, 0, 0, 0.1);
+  --modal-submit-button-shadow: rgba(0, 0, 0, 0.15);
+  --footer-input-border: rgba(255, 255, 255, 0.3);
+  --footer-mail-color: rgba(255, 255, 255, 0.6);
 }
 body {
   color: var(--main-text-color);
@@ -213,10 +219,15 @@ a {
   padding: 10px 30px;
   min-width: 200px;
   max-height: 50px;
+  transition: background-color 250ms var(--transform-type),
+    box-shadow 250ms var(--transform-type);
 }
 .hero .button.button-bc:hover,
 .hero .button.button-bc:focus {
   cursor: pointer;
+  outline: none;
+  background-color: var(--modal-submit-button-hover_focus);
+  box-shadow: var(--modal-submit-button-shadow);
 }
 .features,
 .our-clients,
@@ -490,7 +501,9 @@ a {
 .footer-list .city-address {
   color: var(--very-light-color);
 }
-
+.footer-center {
+  margin-right: auto;
+}
 .footer-text {
   text-transform: uppercase;
   color: var(--very-light-color);
@@ -529,6 +542,82 @@ a {
 .footer-social-link:focus {
   background-color: var(--color-hover_focus);
 }
+/* form footer */
+.footer-form,
+.footer-label,
+.footer-mail,
+.footer-form-button {
+  display: flex;
+}
+.footer-label {
+  flex-direction: column;
+  color: var(--very-light-color);
+  margin-left: auto;
+  margin-right: 12px;
+}
+.footer-label-text {
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+}
+.footer-mail {
+  align-items: center;
+  background-color: var(--dark-background);
+  width: 358px;
+  height: 50px;
+  padding: 0 16px;
+
+  letter-spacing: 0.03em;
+  color: var(--footer-mail-color);
+  font-size: 16px;
+  line-height: 1.25;
+
+  border: 1px solid var(--footer-input-border);
+  box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+}
+.footer-mail:focus {
+  outline: none;
+  border: 1px solid var(--color-hover_focus);
+}
+/* transition for footer-form */
+.footer-form-button,
+.footer-mail {
+  transition: background-color 250ms var(--transform-type),
+    box-shadow 250ms var(--transform-type), border 250ms var(--transform-type);
+}
+
+.footer-form-button {
+  align-items: center;
+  align-self: flex-end;
+  max-width: 200px;
+  max-height: 50px;
+  border: 1px solid var(--color-hover_focus);
+  border-radius: 4px;
+  padding: 10px 28px 10px 29px;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  color: var(--very-light-color);
+  background-color: var(--color-hover_focus);
+  cursor: pointer;
+}
+.footer-form-button:hover,
+.footer-form-button:focus {
+  outline: none;
+  background-color: var(--modal-submit-button-hover_focus);
+  box-shadow: 0px 4px 4px var(--modal-submit-button-shadow);
+}
+.footer-form-button-text {
+  margin-right: 10px;
+}
+.footer-svg {
+  display: block;
+  fill: var(--very-light-color);
+}
 /* подключаем портфолио */
 .portfolio-filter {
   display: flex;
@@ -537,12 +626,10 @@ a {
 }
 .filter-button {
   padding: 6px 22px;
+  line-height: 1.62;
 }
 .pf-button:not(last-child) {
   margin-right: 8px;
-}
-.filter-button {
-  line-height: 1.62;
 }
 .button,
 .filter-button {
@@ -563,6 +650,7 @@ a {
   cursor: pointer;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  outline: none;
 }
 .portfolio-list {
   display: flex;
@@ -600,7 +688,6 @@ a {
   left: 0;
   display: flex;
   transform: translate(0, 100%);
-  /* z-index: -1; */
 
   width: 100%;
   height: 100%;
@@ -616,7 +703,6 @@ a {
 .portfolio-list-link:hover .overlay-text,
 .portfolio-list-link:focus .overlay-text {
   transform: translate(0, 0);
-  /* z-index: 0; */
 }
 .portfolio-card-div {
   display: block;
@@ -662,7 +748,7 @@ a {
   transform: translate(-50%, -50%);
 
   width: 528px;
-  height: 581px;
+  max-height: 581px;
   background: var(--very-light-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -698,4 +784,157 @@ a {
 .modal-icon-close-svg {
   transition: background-color 250ms var(--transform-type),
     fill 250ms var(--transform-type);
+}
+/* modal-form */
+/* add flex to elements of modal-form */
+.modal-form,
+.modal-form label,
+.modal-feedback,
+.checkbox-text,
+.checkbox-text::before,
+.modal-submit-button {
+  display: flex;
+}
+/* add transition to elements */
+.modal-input,
+.modal-feedback,
+.modal-svg,
+.checkbox-text::before,
+.modal-submit-button {
+  transition: border-color 250ms var(--transform-type),
+    fill 250ms var(--transform-type),
+    background-color 250ms var(--transform-type),
+    box-shadow 250ms var(--transform-type);
+}
+
+.modal-form {
+  flex-direction: column;
+  padding: 40px 40px 0 40px;
+}
+.modal-form .form-title {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+  font-weight: bold;
+}
+.modal-form .is-relative {
+  position: relative;
+}
+.modal-form label {
+  flex-direction: column;
+}
+.modal-form .form-text {
+  margin: 0 0 4px 0;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: #757575;
+  text-transform: capitalize;
+}
+.modal-input,
+.modal-feedback {
+  font-size: 14px;
+  line-height: 1.143;
+  letter-spacing: 0.01em;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid var(--modal-border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.modal-input {
+  height: 40px;
+  padding: 0 10px 0 42px;
+}
+.is-margined {
+  margin: 0 0 10px 0;
+}
+.modal-feedback {
+  padding: 12px 16px;
+  margin: 0 0 20px 0;
+  resize: none;
+}
+.modal-input::placeholder,
+.modal-feedback::placeholder {
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: var(--modal-placeholder-text);
+}
+.modal-svg {
+  fill: currentColor;
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translate(0, -50%);
+}
+.modal-input:focus,
+.modal-feedback:focus {
+  border-color: var(--color-hover_focus);
+  outline: none;
+}
+.modal-input:focus ~ .modal-svg {
+  fill: var(--color-hover_focus);
+}
+.checkbox-text {
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: var(--other-text-color);
+  justify-content: center;
+  margin: 0 0 30px 0;
+}
+.checkbox-text-link {
+  color: var(--color-hover_focus);
+  text-decoration: underline;
+  margin-left: 5px;
+}
+.checkbox-text::before {
+  content: "";
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--main-text-color);
+  border-radius: 2px;
+  background-image: url("../images/icons/modal-policy-icon.svg");
+  margin: 3px 7px 0 0;
+}
+.checkbox:checked + .checkbox-text::before {
+  background-color: var(--color-hover_focus);
+  border-color: var(--color-hover_focus);
+}
+.checkbox:focus + .checkbox-text::before {
+  border-color: var(--color-hover_focus);
+}
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+.modal-submit-button {
+  max-width: 200px;
+  height: 50px;
+  padding: 10px 55px;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  margin: 0 auto 40px;
+  background-color: var(--color-hover_focus);
+  color: var(--very-light-color);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-submit-button:hover,
+.modal-submit-button:focus {
+  outline: none;
+  border-color: var(--color-hover_focus);
+  background-color: var(--modal-submit-button-hover_focus);
+  box-shadow: 0px 4px 4px var(--modal-submit-button-shadow);
 }
