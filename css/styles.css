@@ -471,7 +471,7 @@ a {
   letter-spacing: 0.02em;
 }
 .footer-leftside {
-  padding-right: 75px;
+  margin-right: 75px;
 }
 .footer-leftside .footer-link {
   display: flex;
